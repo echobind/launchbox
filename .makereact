@@ -1,0 +1,18 @@
+{
+  "baseDir": "src",
+  "templateDir": ".templates",
+  "model": {
+    "template": "model.ts.ejs",
+    "target": "models",
+    "fileName": "<name>.blah.js",
+    "pascalCase": true,
+    "additionalGenerators": [
+      "componentTest",
+      "componentStory",
+      "componentStyle"
+    ]
+  },
+  "componentTest": {},
+  "componentStory": {},
+  "componentStyle": {}
+}

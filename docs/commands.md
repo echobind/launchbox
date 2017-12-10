@@ -1,3 +1,7 @@
 # Command Reference for makereact
 
-TODO: Add your command reference here
+## generate
+
+## init
+
+Creates a config file to set up directories and such
