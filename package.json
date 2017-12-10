@@ -1,10 +1,10 @@
 {
-  "name": "makereact",
+  "name": "launchbox",
   "version": "0.0.1",
-  "description": "makereact CLI",
+  "description": "launchbox CLI",
   "private": true,
   "bin": {
-    "makereact": "bin/makereact"
+    "launchbox": "bin/launchbox"
   },
   "scripts": {
     "format": "prettier --write **/*.{js,ts,tsx,json}",

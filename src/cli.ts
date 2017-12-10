@@ -6,9 +6,9 @@ const { build } = require('gluegun')
 async function run(argv) {
   // create a CLI runtime
   const cli = build()
-    .brand('makereact')
+    .brand('launchbox')
     .src(`${__dirname}`)
-    .plugins('./node_modules', { matching: 'makereact-*', hidden: true })
+    .plugins('./node_modules', { matching: 'launchbox-*', hidden: true })
     .create()
 
   // and run it

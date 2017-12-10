@@ -1,4 +1,4 @@
-# Command Reference for makereact
+# Command Reference for launchbox
 
 ## generate
 

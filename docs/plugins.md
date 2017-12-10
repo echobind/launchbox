@@ -1,10 +1,9 @@
-# Plugin guide for makereact
+# Plugin guide for launchbox
 
-Plugins allow you to add features to makereact, such as commands and
-extensions to the `context` object that provides the majority of the functionality
-used by makereact.
+Plugins allow you to add features to launchbox, such as commands and extensions to the `context`
+object that provides the majority of the functionality used by launchbox.
 
-Creating a makereact plugin is easy. Just create a repo with two folders:
+Creating a launchbox plugin is easy. Just create a repo with two folders:
 
 ```
 commands/
@@ -16,12 +15,12 @@ A command is a file that looks something like this:
 ```js
 // commands/foo.js
 
-module.exports = (context) => {
-  const { print, filesystem } = context
+module.exports = context => {
+  const { print, filesystem } = context;
 
-  const desktopDirectories = filesystem.subdirectories(`~/Desktop`)
-  print.info(desktopDirectories)
-}
+  const desktopDirectories = filesystem.subdirectories(`~/Desktop`);
+  print.info(desktopDirectories);
+};
 ```
 
 An extension lets you add additional features to `context`.
@@ -29,17 +28,18 @@ An extension lets you add additional features to `context`.
 ```js
 // extensions/bar-extension.js
 
-module.exports = (context) => {
-  const { print } = context
+module.exports = context => {
+  const { print } = context;
 
-  context.bar = () => { print.info('Bar!') }
-}
+  context.bar = () => {
+    print.info('Bar!');
+  };
+};
 ```
 
 This is then accessible in your plugin's commands as `context.bar`.
 
 # Loading a plugin
 
-To load a particular plugin (which has to start with `makereact-*`),
-install it to your project using `npm install --save-dev makereact-PLUGINNAME`,
-and makereact will pick it up automatically.
+To load a particular plugin (which has to start with `launchbox-*`), install it to your project
+using `npm install --save-dev launchbox-PLUGINNAME`, and launchbox will pick it up automatically.
