@@ -1,8 +1,13 @@
 {
   "name": "launchbox",
   "version": "0.0.1",
-  "description": "launchbox CLI",
-  "private": true,
+  "homepage": "https://github.com/gamut-code/spectrum",
+  "author": "Chris Ball",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/echobind/launchbox.git"
+  },
+  "description": "A pluggable file generator for JavaScript applications.",
   "bin": {
     "launchbox": "bin/launchbox"
   },
@@ -12,19 +17,15 @@
     "watch": "ava --watch",
     "coverage": "nyc ava"
   },
-  "files": [
-    "tsconfig.json",
-    "LICENSE",
-    "readme.md",
-    "docs",
-    "bin",
-    "src"
-  ],
+  "files": ["tsconfig.json", "LICENSE", "readme.md", "docs", "bin", "src"],
   "license": "MIT",
+  "engines": {
+    "node": ">=7"
+  },
   "dependencies": {
     "typescript": "^2.5.3",
     "ts-node": "^3.3.0",
-    "gluegun": "next"
+    "gluegun": "2.0.0-alpha.16"
   },
   "devDependencies": {
     "@types/node": "^8.0.47",
