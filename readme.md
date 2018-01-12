@@ -14,9 +14,13 @@ With your new superpowers:
 `launchbox g component something`
 
 ✔ All done! 🚀
+
 Created src/components/Modal/Modal.js
+
 Created src/components/Modal/index.js
+
 Created src/components/Modal/stories.js
+
 Created src/components/Modal/styles.js
 
 ## Installation
