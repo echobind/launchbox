@@ -13,8 +13,8 @@
   },
   "scripts": {
     "format": "prettier --write **/*.{js,ts,tsx,json}",
-    "test": "ava",
-    "watch": "ava --watch",
+    "test": "ava-ts",
+    "watch": "ava-ts --watch",
     "coverage": "nyc ava"
   },
   "files": ["tsconfig.json", "LICENSE", "readme.md", "docs", "bin", "src"],
@@ -29,8 +29,9 @@
   },
   "devDependencies": {
     "@types/node": "^8.0.47",
-    "prettier": "^1.7.4",
     "ava": "^0.22.0",
-    "nyc": "^11.2.1"
+    "ava-ts": "^0.24.0",
+    "nyc": "^11.2.1",
+    "prettier": "^1.7.4"
   }
 }
