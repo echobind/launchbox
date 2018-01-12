@@ -17,7 +17,14 @@
     "watch": "ava-ts --watch",
     "coverage": "nyc ava"
   },
-  "files": ["tsconfig.json", "LICENSE", "readme.md", "docs", "bin", "src"],
+  "files": [
+    "tsconfig.json",
+    "LICENSE",
+    "readme.md",
+    "docs",
+    "bin",
+    "src"
+  ],
   "license": "MIT",
   "engines": {
     "node": ">=7"
