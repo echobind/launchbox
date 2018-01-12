@@ -1,6 +1,6 @@
 # Launchbox
 
-A **pluggable** file generator for your React and React Native applications.
+A **pluggable** file generator for JavaScript applications. Currently, the default configuration is for React.
 
 Before Launchbox:
 "I need to make a new component"
