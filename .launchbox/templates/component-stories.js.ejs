@@ -1,0 +1,12 @@
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import <%= props.name %> from './<%= props.name %>';
+
+const stories = storiesOf('<%= props.name %>', module);
+
+stories.add(
+  'Default',
+  () => (
+    <<%= props.name %>/>
+  )
+);
