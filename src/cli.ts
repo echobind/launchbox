@@ -1,4 +1,4 @@
-const { build } = require('gluegun')
+const { build } = require('gluegun');
 
 /**
  * Create the cli and kick it off
@@ -9,13 +9,13 @@ async function run(argv) {
     .brand('launchbox')
     .src(`${__dirname}`)
     .plugins('./node_modules', { matching: 'launchbox-*', hidden: true })
-    .create()
+    .create();
 
   // and run it
-  const context = await cli.run(argv)
+  const context = await cli.run(argv);
 
   // send it back (for testing, mostly)
-  return context
+  return context;
 }
 
-module.exports = run
+module.exports = run;
