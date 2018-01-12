@@ -5,13 +5,12 @@ const path = require('path');
 module.exports = context => {
   const { filesystem } = context;
   const currentDirectory = filesystem.cwd();
-  const configFile = path.join(currentDirectory, '.launchbox/config.json');
+  let configFile = path.join(currentDirectory, '.launchbox/config.js');
 
   if (!filesystem.exists(configFile)) {
-    throw new Error(`config file not found`);
+    configFile = path.join(__dirname, '../../.launchbox/config.js');
   }
 
-  // TODO: error checking
-  const config = filesystem.read(configFile, 'json');
+  const config = require(configFile);
   context.config = config;
 };

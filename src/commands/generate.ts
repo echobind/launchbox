@@ -1,18 +1,79 @@
+const generateFileWithConfigAndName = async (context, generator, name) => {
+  const { strings, template: { generate } } = context;
+  const { generatorConfig } = context.config;
+  const { pascalCase } = strings;
+  const baseDir = context.config['baseDir'];
+  const templateDir = context.config['templateDir'];
+
+  // TODO: this or options.pascalCase (launchbox g component --pascalCase)
+  if (generator.pascalCase) name = pascalCase(name);
+
+  // replace name token in file name (TODO: better way to do this?)
+  const fileName = generator.fileName.replace('<name>', name);
+  const targetName = generator.target.replace('<name>', name);
+  const target = `${baseDir}/${targetName}/${fileName}`;
+
+  // TODO: bail if template doesn't exist
+
+  await generate({
+    directory: templateDir,
+    template: generator.template, // TODO: this -> .launchbox/templates -> plugins -> src/templates
+    target,
+    props: { name }
+  });
+
+  const additionalGenerators = (generator.additionalGenerators || []).reduce(
+    (prev, generatorName) => {
+      const generatorObject = generatorConfig[generatorName];
+      let additionalFiles = generateFileWithConfigAndName(context, generatorObject, name);
+      return prev.concat(additionalFiles);
+    },
+    [target]
+  );
+
+  return await Promise.all(additionalGenerators);
+};
+
 module.exports = {
   name: 'generate',
   alias: ['g'],
   run: async context => {
-    const { parameters, template: { generate }, print, strings } = context;
+    const { parameters, print } = context;
     const { color } = print;
-    const { pascalCase, camelCase } = strings;
 
     const generatorName = parameters.first;
     let itemName = parameters.second;
-    const generator = context.config.generatorConfig[camelCase(generatorName)];
-    const templateDir = context.config['templateDir'];
-    const baseDir = context.config['baseDir'];
+    const { generatorConfig } = context.config;
+    const generator = generatorConfig[generatorName];
 
     const spinner = print.spin(`Generating a new ${generatorName}`);
+
+    // list generators if no arguments
+    if (!parameters.first) {
+      spinner.stop();
+      const generators = Object.keys(generatorConfig);
+      print.info(
+        `Usage: launchbox g ${print.color.highlight('<generator>')} ${print.color.highlight(
+          '<name>'
+        )} ${print.color.muted('<options>')}`
+      );
+
+      print.info('');
+      print.info('Available generators:');
+      generators.forEach(g => {
+        const descriptionText = generatorConfig[g].description;
+        print.info(`  ${g}`);
+
+        if (!descriptionText) {
+          print.info('');
+          return;
+        }
+
+        print.info(`    ${print.color.muted(descriptionText)}`);
+      });
+
+      return;
+    }
 
     // bail if command doesn't exist
     if (!generator) {
@@ -32,23 +93,11 @@ module.exports = {
       return;
     }
 
-    // TODO: this or options.pascalCase (launchbox g component --pascalCase)
-    if (generator.pascalCase) itemName = pascalCase(itemName);
+    const newFiles = await generateFileWithConfigAndName(context, generator, itemName);
 
-    // replace name token in file name (TODO: better way to do this?)
-    const fileName = generator.fileName.replace('<name>', itemName);
-    const targetName = generator.target.replace('<name>', itemName);
-    const target = `${baseDir}/${targetName}/${fileName}`;
+    spinner.succeed('All done!');
+    print.info('');
 
-    await generate({
-      directory: templateDir,
-      template: generator.template, // TODO: this -> .launchbox/templates -> plugins -> src/templates
-      target,
-      props: { name: itemName }
-    });
-
-    spinner.succeed('All done! 🚀');
-    print.info(`Created ${target}`);
-    print.info(print.colors.muted('TODO: run other related generators...'));
+    newFiles.forEach(f => print.info(`Created ${f}`));
   }
 };

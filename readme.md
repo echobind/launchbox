@@ -1,17 +1,60 @@
-# launchbox
+# Launchbox
 
-Initial spike at something similar to Ember's blueprints, but using provided configurations for flexibility. This started as a way to generate files for React / React Native, but could work in any JavaScript project.
+A **pluggable** file generator for JavaScript applications. Currently, the default configuration is for React.
 
-## Goals
-1. Get a team to decide on file structure, filenames, etc
-2. Set up the config or install a plugin with an out of the box config
-3. Override default templates in consuming app with whatever you want
-4. Run commands to generate things `launchbox g component --pascalCase`, `launchbox d component`
+Before Launchbox:
+"I need to make a new component"
 
-## Random name trivia
+* open file + copy + find folder + right click + new + name it + paste :angry:
+* repeat for related things like stories, styles, or tests
 
-Launch Box - An excavated cavern providing access for the Tunnel Boring Maching to mine the future
-tunnels of the subway.
+With your new superpowers:
+"I need to make a new component"
+
+`launchbox g component something`
+
+✔ All done! 🚀
+
+Created src/components/Modal/Modal.js<br>
+Created src/components/Modal/index.js<br>
+Created src/components/Modal/stories.js<br>
+Created src/components/Modal/styles.js
+
+## Installation
+
+`yarn add launchbox --dev`
+
+## Usage
+
+Use `launchbox generate` (or `launchbox g`) to generate files for your project.
+
+Launchbox includes the following generators out of the box:
+
+* Component Index (component/<name>/index.js)
+* Component Stories (component/<name>/stories.js)
+* Component Styles (component/<name>/styles.js)
+* Component (component/<name>/<name>.js & all above component files)
+
+## Customizing
+
+The above is a good starting point, but you'll likely need to customize the provided config or file templates.
+
+To do that, run `launchbox init`.
+
+The default file generators will be copied into your project and you can tweak based on your needs.
+
+To add a new file generator:
+
+1. Create a template in `.launchbox/templates`
+2. Add a complementary generator config to `.launchbox/config.js`
+
+## Examples
+
+TODO
+
+## Future Plans
+
+* Plugins for common configurations
 
 # License
 
