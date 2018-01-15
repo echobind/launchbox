@@ -30,10 +30,10 @@ Use `launchbox generate` (or `launchbox g`) to generate files for your project.
 
 Launchbox includes the following generators out of the box:
 
-* Component Index (component/<name>/index.js)
-* Component Stories (component/<name>/stories.js)
-* Component Styles (component/<name>/styles.js)
-* Component (component/<name>/<name>.js & all above component files)
+* Component Index (component/\<name>/index.js)
+* Component Stories (component/\<name>/stories.js)
+* Component Styles (component/\<name>/styles.js)
+* Component (component/\<name>/\<name>.js & all above component files)
 
 ## Customizing
 
