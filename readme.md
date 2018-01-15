@@ -11,7 +11,7 @@ Before Launchbox:
 With your new superpowers:
 "I need to make a new component"
 
-`launchbox g component something`
+`launchbox g component modal`
 
 ✔ All done! 🚀
 
