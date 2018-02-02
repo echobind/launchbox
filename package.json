@@ -23,7 +23,8 @@
     "readme.md",
     "docs",
     "bin",
-    "src"
+    "src",
+    ".launchbox"
   ],
   "license": "MIT",
   "engines": {
