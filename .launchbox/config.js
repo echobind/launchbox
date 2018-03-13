@@ -17,7 +17,11 @@ module.exports = {
       // A description of the generator to show in help mode
       description: 'Generates a component.',
       // additional generators to run when complete
-      additionalGenerators: ['componentIndex', 'componentStory', 'componentStyle']
+      additionalGenerators: [
+        'component:index',
+        'component:story',
+        'component:style'
+      ]
     },
     'component:index': {
       template: 'index.js.ejs',
@@ -27,14 +31,14 @@ module.exports = {
       pascalCase: true
     },
     'component:story': {
-      template: 'component-story.js.ejs',
+      template: 'component-stories.js.ejs',
       target: 'components/<name>',
       fileName: 'stories.js',
       description: 'Generates a component story for storybook.',
       pascalCase: true
     },
     'component:style': {
-      template: 'component-style.js.ejs',
+      template: 'styles.js.ejs',
       target: 'components/<name>.stories',
       fileName: 'styles.js',
       description: 'Generates a component style file',
