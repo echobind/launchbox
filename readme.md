@@ -1,6 +1,9 @@
 # Launchbox
 
-A **pluggable** file generator for JavaScript applications. Currently, the default configuration is for React.
+A **pluggable** file generator for JavaScript applications.
+
+## NOTE
+After creating this library, we discovered Hygen (http://www.hygen.io/). Hygen encapsulates the spirit of Launchbox, but with some additional enhancements. While Launchbox works well, we recommend Hygen for new projects.
 
 Before Launchbox:
 "I need to make a new component"
